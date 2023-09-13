@@ -1,0 +1,33 @@
+<h2>Pedido</h2>
+
+<div th:unless="${#lists.isEmpty(sessionPedido)}">
+    <table border = "1">
+        <thead>
+        <tr>
+            <th>Restaurante</th>
+            <th>Prato</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Aumentar</th>
+            <th>Diminuir</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" consumidor:${sessionPedido}">
+            <td th:text="${consumidor.itemCardapio.restaurante.nome}"></td>
+            <td th:text="${consumidor.itemCardapio.nome}"></td>
+            <td th:text="${consumidor.itemCardapio.preco}"></td>
+            <td th:text="${consumidor.quantidade}"></td>
+            <td><a th:href="@{/pedido/aumentar/{id}(id=${consumidor.itemCardapio.id})}">Aumentar</a></td>
+            <td><a th:href="@{/pedido/diminuir/{id}(id=${consumidor.itemCardapio.id})}">Diminuir</a></td>
+
+        </tr>
+        </tbody>
+        </table>
+        <p><a th:text="'Preço total:'+${precoTotal}"></a></p>
+</div>
+<div th:if ="${#lists.isEmpty(sessionPedido)}">
+    <h2>Não há items no pedido</h2>
+</div>
+<p><a href="/restaurantes">Voltar para os restaurantes</a></p>

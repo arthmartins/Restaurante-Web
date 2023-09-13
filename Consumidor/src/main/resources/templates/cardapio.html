@@ -1,0 +1,35 @@
+<h2 th:text="'Cardápio - ' +${restaurante.nome}">< </h2>
+
+
+<div th:unless="${#lists.isEmpty(items)}">
+
+    <table border = "1">
+      <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Pedido</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each=" item:${items}">
+        <td th:text="${item.nome}"></td>
+        <td th:text="${item.descricao}"></td>
+        <td th:text="${item.preco}"></td>
+        <td><a th:href="@{/pedir/{id}(id=${item.id})}">Pedir</a></td>
+
+
+      </tr>
+      </tbody>
+    </table>
+</div>
+<div th:if ="${#lists.isEmpty(items)}">
+  <h2>Cardápio vazio</h2>
+</div>
+
+
+<p><a href="/restaurantes">Voltar para a página de restaurantes</a></p>
+<p><a href="/index">Voltar para a página inicial</a></p>

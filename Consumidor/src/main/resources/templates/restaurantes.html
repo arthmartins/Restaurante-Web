@@ -1,0 +1,18 @@
+<h2>Restaurantes</h2>
+<table border = "1">
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Cardápio</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each=" restaurante:${restaurantes}">
+    <td th:text="${restaurante.nome}"></td>
+    <td><a th:href="@{/cardapio/{id}(id=${restaurante.id})}">Cardápio</a></td>
+
+  </tr>
+  </tbody>
+</table>
+<p><a href="/index">Voltar para a tela inicial</a></p>
