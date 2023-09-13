@@ -1,0 +1,11 @@
+<h2>Novo restaurante</h2>
+<form action="#" th:action="@{/adicionar-restaurante}" th:object="${restaurante}" method="post">
+    <label for="nome">Nome: </label>
+    <input type="text" th:field="*{nome}" id="nome">
+    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+
+    <input type="submit" value="Adicionar restaurante">
+
+    <p><a href="/restaurantes">Restaurantes Listados</a></p>
+    <p><a href="/index">Página inicial</a></p>
+</form>

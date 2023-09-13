@@ -1,0 +1,30 @@
+<h2>Restaurantes</h2>
+
+<div th:unless="${#lists.isEmpty(restaurantes)}">
+<table border = "1">
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Editar</th>
+    <th>Remover</th>
+    <th>Cardápio</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each=" restaurante:${restaurantes}">
+    <td th:text="${restaurante.nome}"></td>
+    <td><a th:href="@{/editar/{id}(id=${restaurante.id})}">Editar</a></td>
+    <td><a th:href="@{/remover/{id}(id=${restaurante.id})}">Remover</a></td>
+    <td><a th:href="@{/cardapio/{id}(id=${restaurante.id})}">Cardápio</a></td>
+
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<div th:if ="${#lists.isEmpty(restaurantes)}">
+  <h2>Sem restaurantes</h2>
+</div>
+
+<p><a href="/novo-restaurante">Adicionar novo restaurante</a></p>

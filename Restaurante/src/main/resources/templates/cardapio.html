@@ -1,0 +1,34 @@
+<h2 th:text="'Cardápio - ' +${restaurante.nome}">< </h2>
+
+<div th:unless="${#lists.isEmpty(items)}">
+    <table border = "1">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Editar</th>
+            <th>Remover</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" item:${items}">
+            <td th:text="${item.nome}"></td>
+            <td th:text="${item.descricao}"></td>
+            <td th:text="${item.preco}"></td>
+            <td><a th:href="@{/editar-item/{id}(id=${item.id})}">Editar</a></td>
+            <td><a th:href="${item.restaurante.id} +'/remover/'+ ${item.id}">Remover</a></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:if ="${#lists.isEmpty(items)}">
+    <h2>Cardápio vazio</h2>
+</div>
+
+<p><a th:href="'/novo-itemcardapio/'+${restaurante.id}">Adicionar item ao cardápio</a></p>
+<p><a href="/restaurantes">Voltar para a página de restaurantes</a></p>
+<p><a href="/index">Voltar para a página inicial</a></p>
